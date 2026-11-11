@@ -1,0 +1,16 @@
+[project]
+name = "mac-speech-analyzer"
+version = "0.1.3"
+description = "Renamed to py-mac-speech-analyzer — this is a forwarding package."
+requires-python = ">=3.10"
+dependencies = ["py-mac-speech-analyzer>=0.2.0"]
+
+[project.urls]
+Homepage = "https://github.com/paraversal/py-mac-speech-analyzer"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+bypass-selection = true

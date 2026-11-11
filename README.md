@@ -1,4 +1,4 @@
-# mac-speech-analyzer
+# py-mac-speech-analyzer
 
 🐍 Python package to run the macOS 26 SpeechAnalyzer API from Python to transcribe audio files.
 
@@ -18,9 +18,9 @@ The SpeechAnalyzer API generally provides [faster and better results]((https://g
 ## Installation
 
 ```bash
-uv add mac-speech-analyzer
+uv add py-mac-speech-analyzer
 # or
-pip install mac-speech-analyzer
+pip install py-mac-speech-analyzer
 ```
 
 ## Usage
@@ -90,4 +90,4 @@ to rebuild the package
 
 # License
 
-mac-speech-analyzer is released under the MIT License. See [LICENSE](./LICENSE) for more details.
+py-mac-speech-analyzer is released under the MIT License. See [LICENSE](./LICENSE) for more details.
