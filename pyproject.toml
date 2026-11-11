@@ -14,6 +14,10 @@ classifiers = [
   "Programming Language :: Python :: 3"
 ]
 
+[project.urls]
+Homepage = "https://github.com/paraversal/py-mac-speech-analyzer"
+Issues = "https://github.com/paraversal/py-mac-speech-analyzer/issues"
+
 [tool.scikit-build]
 wheel.packages = ["src/macspeechanalyzer"]
 wheel.py-api = "py3"
