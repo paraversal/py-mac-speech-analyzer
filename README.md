@@ -77,16 +77,14 @@ The pure Swift and pure Python layers only deal with their respective languages 
 ## Development
 
 ```zsh
-uv pip install -e .
+uv sync
 ```
 
-to one-time-install the package as editable, from then on:
+installs the package in editable mode. CMake/ninja output stays in `build/`; the source tree never receives build artifacts. After changing Swift or CMake files, rebuild with:
 
 ```zsh
-ninja
+uv sync --reinstall-package py-mac-speech-analyzer
 ```
-
-to rebuild the package
 
 # License
 

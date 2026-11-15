@@ -28,8 +28,8 @@ build-dir = "build/{wheel_tag}"
 version = ">=3.26"
 
 [tool.scikit-build.editable]
-mode = "inplace"
-rebuild = true
+# Redirect mode keeps all CMake/ninja output in build/, never in the source tree.
+mode = "redirect"
 
 [dependency-groups]
 dev = [

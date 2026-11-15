@@ -3,6 +3,7 @@ from pathlib import Path
 import logging
 from typing import Callable
 import os
+import sys
 
 log = logging.getLogger(__name__)
 
@@ -19,7 +20,23 @@ def _log_cb(level, msg):
 def _live_cb(msg):
     print(msg.decode("utf-8", "replace") if msg else "", end="", flush=True)
 
-_lib = ctypes.CDLL(str(Path(__file__).parent / f"libmacspeechanalyzer_core.dylib"))
+def _find_library() -> Path:
+    """Locate the native library on the package import path.
+
+    A wheel keeps it next to this file; an editable redirect keeps it in the
+    build tree, which is appended to the package __path__.
+    """
+    package = sys.modules.get(__package__ or "")
+    search = getattr(package, "__path__", None) or [Path(__file__).parent]
+    for directory in search:
+        candidate = Path(directory) / "libmacspeechanalyzer_core.dylib"
+        if candidate.is_file():
+            return candidate
+    raise ImportError(
+        "libmacspeechanalyzer_core.dylib not found; run `uv sync` to build it"
+    )
+
+_lib = ctypes.CDLL(str(_find_library()))
 
 # int32 msa_transcribe(const char* url, const char* locale, char** outText, bool* emitLiveFragments)
 _lib.msa_transcribe.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.POINTER(ctypes.c_void_p), ctypes.c_bool]
